@@ -3,7 +3,17 @@ import bgmobile from "../images/bg-home-mobile.png";
 import bgdesktop from "../images/bg-home.png";
 
 const Accueil = () => {
-  return <div></div>;
+  return (
+    <div className="body-home">
+      <div className="divImg">
+        <img
+          src={bgdesktop}
+          alt="Save-The-Date-Ines-Maxime"
+          className="img-home"
+        />
+      </div>
+    </div>
+  );
 };
 
 export default Accueil;

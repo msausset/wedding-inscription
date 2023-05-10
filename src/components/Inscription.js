@@ -34,24 +34,25 @@ const handleClick = async (e) => {
   return (
     <div>
       {/* FORMULAIRE */}
+      <div className="body-container">
+        <div className="container">
+          <form action="">
+            <p className="">Veuillez remplir le formulaire ci-dessous.</p>
+            <input type="text" placeholder="NOM" />
+            <br />
+            <input type="text" placeholder="PRÉNOM" />
+            <br />
+            <input type="button" value="S'INSCRIRE" />
+          </form>
 
-      <div className="container">
-        <form action="">
-          <p className="">Veuillez remplir le formulaire ci-dessous.</p>
-          <input type="text" placeholder="NOM" />
-          <br />
-          <input type="email" placeholder="EMAIL" />
-          <br />
-          <input type="button" value="S'INSCRIRE" />
-        </form>
+          {/* OMBRES */}
 
-        {/* OMBRES */}
-
-        <div className="drop drop-1"></div>
-        <div className="drop drop-2"></div>
-        <div className="drop drop-3"></div>
-        <div className="drop drop-4"></div>
-        <div className="drop drop-5"></div>
+          <div className="drop drop-1"></div>
+          <div className="drop drop-2"></div>
+          <div className="drop drop-3"></div>
+          <div className="drop drop-4"></div>
+          <div className="drop drop-5"></div>
+        </div>
       </div>
     </div>
   );

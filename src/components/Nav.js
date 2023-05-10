@@ -13,18 +13,24 @@ const Nav = () => {
   return (
     <div>
       <nav className="navbar">
-        <a href="/" className="logo">
-          I&M
+        <a className="logo">
+          <Link to="/">I&M</Link>
         </a>
         <div className={open ? "nav-links mobile-menu" : "nav-links"}>
           <ul>
             <li className="active">
-              <a href="/">ACCUEIL</a>
+              <a>
+                <Link to="/" onClick={() => setOpen(!open)}>
+                  ACCUEIL
+                </Link>
+              </a>
             </li>
             {Links.map((link) => (
               <li key={link.name}>
                 <a>
-                  <Link to={link.link}>{link.name}</Link>
+                  <Link to={link.link} onClick={() => setOpen(!open)}>
+                    {link.name}
+                  </Link>
                 </a>
               </li>
             ))}

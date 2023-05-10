@@ -9,10 +9,39 @@
 body {
   font-family: "Poppins";
   height: 100vh;
-  width: 100vw;
   background: linear-gradient(45deg, #213b6b, #aec1e2);
-  background-size: cover;
 }
+
+/* ----------------------------------------------------------------------------------- ACCUEIL */
+
+.body-home {
+  height: 100vh;
+  width: 100vw;
+}
+
+.body-home .divImg {
+  height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.body-home img {
+  display: block;
+  object-fit: cover;
+  overflow: hidden;
+  margin: auto;
+  border-radius: 20px;
+}
+
+@media screen and (max-width: 500px) {
+  .body-home img {
+    margin-left: 10px;
+    margin-right: 10px;
+  }
+}
+
+/* ----------------------------------------------------------------------------------- NAVBAR */
 
 .navbar {
   position: absolute;
@@ -73,6 +102,7 @@ body {
 
   .navbar .menu-hamburger {
     display: block;
+    z-index: 1;
   }
 
   .nav-links {
@@ -88,6 +118,7 @@ body {
     align-items: center;
     margin-left: -100%;
     transition: all 0.5s ease;
+    z-index: 1;
   }
 
   .nav-links.mobile-menu {
@@ -102,5 +133,225 @@ body {
   .navbar .nav-links ul li {
     margin: 25px 0;
     font-size: 1.2em;
+  }
+}
+
+@media screen and (max-width: 440px) {
+  .navbar .menu-hamburger {
+    display: block;
+    right: 20px;
+  }
+
+  .navbar .logo {
+    left: 20px;
+  }
+}
+
+/* -------------------------------------------------------------------------------------- INSCRIPTION */
+
+.body-container {
+  height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.container {
+  position: relative;
+}
+
+form {
+  background: rgba(255, 255, 255, 0.3);
+  padding: 3rem;
+  height: 320px;
+  border-radius: 20px;
+  border-left: 1px solid rgba(255, 255, 255, 0.3);
+  border-top: 1px solid rgba(255, 255, 255, 0.3);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  -moz-backdrop-filter: blur(10px);
+  box-shadow: 20px 20px 40px -6px rgba(0, 0, 0, 0.2);
+  text-align: center;
+}
+
+p {
+  color: white;
+  font-weight: 500;
+  opacity: 0.7;
+  font-size: 1.4rem;
+  margin-bottom: 60px;
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2);
+}
+
+input {
+  background: transparent;
+  border: none;
+  border-left: 1px solid rgba(255, 255, 255, 0.3);
+  border-top: 1px solid rgba(255, 255, 255, 0.3);
+  padding: 1rem;
+  width: 250px;
+  border-radius: 50px;
+  backdrop-filter: blur(5px);
+  -webkit-backdrop-filter: blur(5px);
+  -moz-backdrop-filter: blur(5px);
+  box-shadow: 4px 4px 60px rgba(0, 0, 0, 0.2);
+  color: white;
+  font-weight: 500;
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2);
+  transition: all 0.3s;
+  margin-bottom: 2em;
+}
+
+input:hover,
+input[type="email"]:focus,
+input[type="password"]:focus {
+  background: rgba(255, 255, 255, 0.1);
+  box-shadow: 4px 4px 60px 8px rgba(0, 0, 0, 0.2);
+}
+
+input[type="button"] {
+  margin-top: 10px;
+  width: 150px;
+  font-size: 1rem;
+  cursor: pointer;
+}
+
+::placeholder {
+  color: #fff !important;
+}
+
+.drop {
+  background: rgba(255, 255, 255, 0.3);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  border-radius: 10px;
+  border-left: 1px solid rgba(255, 255, 255, 0.3);
+  border-top: 1px solid rgba(255, 255, 255, 0.3);
+  box-shadow: 10px 10px 60px -8px rgba(0, 0, 0, 0.2);
+  position: absolute;
+  transition: all 0.2s ease;
+}
+
+.drop-1 {
+  height: 80px;
+  width: 80px;
+  top: -20px;
+  left: -40px;
+  z-index: -1;
+}
+
+.drop-2 {
+  height: 80px;
+  width: 80px;
+  bottom: -30px;
+  right: -10px;
+}
+
+.drop-3 {
+  height: 100px;
+  width: 100px;
+  bottom: 120px;
+  right: -50px;
+  z-index: -1;
+}
+
+.drop-4 {
+  height: 120px;
+  width: 120px;
+  top: -60px;
+  right: -60px;
+}
+
+.drop-5 {
+  height: 60px;
+  width: 60px;
+  bottom: 170px;
+  left: 90px;
+  z-index: -1;
+}
+
+@media screen and (max-width: 700px) {
+  form {
+    padding: 1rem;
+  }
+
+  p {
+    font-size: 1rem;
+  }
+
+  .drop-1 {
+    display: none;
+  }
+
+  .drop-2 {
+    bottom: 20px;
+    right: 255px;
+    z-index: -1;
+  }
+
+  .drop-3 {
+    display: none;
+  }
+
+  .drop-4 {
+    top: 15px;
+    right: 20px;
+    z-index: -1;
+  }
+
+  .drop-5 {
+    bottom: 129px;
+    left: 131px;
+    z-index: -1;
+  }
+}
+
+@media screen and (max-width: 375px) {
+  form {
+    padding: 1rem;
+    width: 230px;
+  }
+
+  p {
+    font-size: 0.8rem;
+  }
+
+  input {
+    width: 200px;
+  }
+
+  input[type="button"] {
+    width: 100px;
+    font-size: 0.7rem;
+  }
+
+  ::placeholder {
+    font-size: 0.7em;
+  }
+
+  .drop-1 {
+    display: none;
+  }
+
+  .drop-2 {
+    bottom: 20px;
+    right: 170px;
+    z-index: -1;
+  }
+
+  .drop-3 {
+    display: none;
+  }
+
+  .drop-4 {
+    top: 15px;
+    right: 20px;
+    z-index: -1;
+  }
+
+  .drop-5 {
+    bottom: 123px;
+    left: 77px;
+    z-index: -1;
   }
 }
