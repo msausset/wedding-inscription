@@ -1,32 +1,46 @@
 require("dotenv").config();
-/* const mongoose = require("mongoose"); */
-const { MongoClient } = require("mongodb");
-const client = new MongoClient(process.env.MONGO_URL);
+const mongoose = require("mongoose");
+const validator = require("validator");
 
-/* main().catch((err) => console.log(err)); */
+main().catch((err) => console.log(err));
 
 async function main() {
-  await client.connect();
-  console.log("connexion ok");
-  const db = client.db("Wedding");
-  const collection = db.collection("test");
-  const insertStuff = await collection.insertMany([
-    { a: 1 },
-    { b: 2 },
-    { c: 3 },
-  ]);
-  console.log("doc inserees");
-  return "done";
+  await mongoose.connect(process.env.MONGO_URL);
 
-  /*   await mongoose.connect(process.env.MONGO_URL);
+  const Subscriber = mongoose.model("Subscriber", {
+    nom: {
+      type: String,
+      required: true,
+      validate(v) {
+        if (!validator.isAlpha(v, "fr-FR"))
+          throw new Error("Le nom ne doit contenir que des lettres.");
+        if (!validator.isLength(v, { min: 3, max: 50 }))
+          throw new Error("Le nom doit avoir minimum 3 caractères.");
+      },
+    },
+    prenom: {
+      type: String,
+      required: true,
+      validate(v) {
+        if (!validator.isAlpha(v, "fr-FR"))
+          throw new Error("Le prénom ne doit contenir que des lettres.");
+        if (!validator.isLength(v, { min: 3, max: 50 }))
+          throw new Error("Le prénom doit avoir minimum 3 caractères.");
+      },
+    },
+  });
 
-  const Personne = mongoose.model("Personne", {
-    nom: String,
-    prenom: String,
-  }); */
+  const firstPerson = new Subscriber({
+    nom: "Léa",
+    prenom: "Naaa",
+  });
+  const secondPerson = new Subscriber({
+    nom: "Léandro",
+    prenom: "Paredes",
+  });
+
+  const firstSave = await firstPerson.save();
+  const secondSave = await secondPerson.save();
+
+  console.log(firstSave, secondSave);
 }
-
-main()
-  .then(console.log())
-  .catch(console.error())
-  .finally(() => client.close());
