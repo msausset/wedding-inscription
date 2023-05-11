@@ -12,7 +12,7 @@ body {
   background: linear-gradient(45deg, #213b6b, #aec1e2);
 }
 
-/* ----------------------------------------------------------------------------------- ACCUEIL */
+/* -------------------------------------------------------------------------------------- ACCUEIL */
 
 .body-home {
   height: 100vh;
@@ -32,16 +32,31 @@ body {
   overflow: hidden;
   margin: auto;
   border-radius: 20px;
+  opacity: 0.8;
+  filter: drop-shadow(20px 10px 12px #000);
 }
 
-@media screen and (max-width: 500px) {
+@media screen and (max-height: 700px) {
   .body-home img {
-    margin-left: 10px;
-    margin-right: 10px;
+    width: 300px;
   }
 }
 
-/* ----------------------------------------------------------------------------------- NAVBAR */
+@media screen and (max-width: 720px) {
+  .body-home img {
+    margin-left: 10px;
+    margin-right: 10px;
+    filter: drop-shadow(6px 25px 12px #000);
+  }
+}
+
+@media screen and (min-height: 700px) and (max-height: 900px) {
+  .body-home img {
+    width: 500px;
+  }
+}
+
+/* -------------------------------------------------------------------------------------- NAVBAR */
 
 .navbar {
   position: absolute;
@@ -203,8 +218,7 @@ input {
 }
 
 input:hover,
-input[type="email"]:focus,
-input[type="password"]:focus {
+input[type="text"]:focus {
   background: rgba(255, 255, 255, 0.1);
   box-shadow: 4px 4px 60px 8px rgba(0, 0, 0, 0.2);
 }
@@ -270,7 +284,7 @@ input[type="button"] {
   z-index: -1;
 }
 
-@media screen and (max-width: 700px) {
+@media screen and (max-width: 700px), (max-height: 900px) {
   form {
     padding: 1rem;
   }
@@ -306,7 +320,7 @@ input[type="button"] {
   }
 }
 
-@media screen and (max-width: 375px) {
+@media screen and (max-width: 375px), (max-height: 750px) {
   form {
     padding: 1rem;
     width: 230px;
@@ -352,6 +366,118 @@ input[type="button"] {
   .drop-5 {
     bottom: 123px;
     left: 77px;
+    z-index: -1;
+  }
+}
+
+/* -------------------------------------------------------------------------------------- CONTACT */
+
+.form-contact {
+  background: rgba(255, 255, 255, 0.3);
+  padding: 3rem;
+  height: 450px;
+  border-radius: 20px;
+  border-left: 1px solid rgba(255, 255, 255, 0.3);
+  border-top: 1px solid rgba(255, 255, 255, 0.3);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  -moz-backdrop-filter: blur(10px);
+  box-shadow: 20px 20px 40px -6px rgba(0, 0, 0, 0.2);
+  text-align: center;
+}
+
+.link-contact {
+  color: inherit;
+  text-decoration: underline;
+}
+
+.link-contact:hover,
+.link-contact-tel:hover {
+  color: #79d2e6;
+  transition: all 0.3s;
+}
+
+textarea {
+  background: transparent;
+  border: none;
+  border-left: 1px solid rgba(255, 255, 255, 0.3);
+  border-top: 1px solid rgba(255, 255, 255, 0.3);
+  padding: 1rem;
+  width: 250px;
+  border-radius: 30px;
+  backdrop-filter: blur(5px);
+  -webkit-backdrop-filter: blur(5px);
+  -moz-backdrop-filter: blur(5px);
+  box-shadow: 4px 4px 60px rgba(0, 0, 0, 0.2);
+  color: white;
+  font-weight: 500;
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2);
+  transition: all 0.3s;
+  margin-bottom: 2em;
+}
+
+textarea:hover {
+  background: rgba(255, 255, 255, 0.1);
+  box-shadow: 4px 4px 60px 8px rgba(0, 0, 0, 0.2);
+}
+
+@media screen and (max-width: 700px), (max-height: 900px) {
+  .form-contact {
+    padding: 1rem;
+  }
+}
+
+@media screen and (max-width: 375px), (max-height: 750px) {
+  textarea {
+    width: 200px;
+  }
+}
+
+/* -------------------------------------------------------------------------------------- CONTACT TELEPHONE */
+
+.div-tel {
+  background: rgba(255, 255, 255, 0.3);
+  padding: 3rem;
+  height: 300px;
+  border-radius: 20px;
+  border-left: 1px solid rgba(255, 255, 255, 0.3);
+  border-top: 1px solid rgba(255, 255, 255, 0.3);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  -moz-backdrop-filter: blur(10px);
+  box-shadow: 20px 20px 40px -6px rgba(0, 0, 0, 0.2);
+  text-align: center;
+}
+
+.p-titre {
+  color: black;
+  margin-bottom: 10px;
+  font-size: 1.2em;
+}
+
+.link-contact-tel {
+  color: inherit;
+}
+
+.drop-2-tel {
+  height: 80px;
+  width: 80px;
+  bottom: -30px;
+  right: -10px;
+}
+
+@media screen and (max-width: 700px), (max-height: 900px) {
+  .drop-2-tel {
+    bottom: 20px;
+    right: 215px;
+    z-index: -1;
+  }
+}
+
+@media screen and (max-width: 375px), (max-height: 750px) {
+  .drop-2-tel {
+    bottom: 20px;
+    right: 170px;
     z-index: -1;
   }
 }

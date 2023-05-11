@@ -5,6 +5,7 @@ import Inscription from "./components/Inscription";
 import Accueil from "./page/Accueil";
 import Nav from "./components/Nav";
 import Contact from "./components/Contact";
+import ContactTelephone from "./components/ContactTelephone";
 
 function App() {
   return (
@@ -16,6 +17,7 @@ function App() {
             <Route index element={<Accueil />} />
             <Route path="inscription" element={<Inscription />} />
             <Route path="contact" element={<Contact />} />
+            <Route path="contact-tel" element={<ContactTelephone />} />
           </Route>
         </Routes>
       </BrowserRouter>
