@@ -1,5 +1,5 @@
 const mongoose = require("mongoose");
-const { isAlpha } = require("validator");
+const validator = require("validator");
 
 // Modèle de User
 
@@ -8,16 +8,22 @@ const userSchema = new mongoose.Schema(
     firstName: {
       type: String,
       required: true,
-      validate: [isAlpha],
       minlength: 3,
       maxlength: 50,
+      validate(v) {
+        if (!validator.isAlpha(v, "fr-FR"))
+          throw new Error("Le prénom ne doit contenir que des caractères.");
+      },
     },
     lastName: {
       type: String,
       required: true,
-      validate: [isAlpha],
       minlength: 3,
       maxlength: 50,
+      validate(v) {
+        if (!validator.isAlpha(v, "fr-FR"))
+          throw new Error("Le nom ne doit contenir que des caractères.");
+      },
     },
   },
   {

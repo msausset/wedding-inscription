@@ -3,14 +3,10 @@ const userController = require("../controllers/user.controller");
 
 // Partie authentification
 
-router.post("/register", function (req, res) {
-  userController.register;
-});
+router.post("/register", userController.register);
 
 // Partie user BDD
 
-router.get("/", function (req, res) {
-  userController.getAllUsers;
-});
+router.get("/", userController.getAllUsers);
 
 module.exports = router;

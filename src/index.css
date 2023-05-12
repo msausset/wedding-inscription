@@ -223,7 +223,7 @@ input[type="text"]:focus {
   box-shadow: 4px 4px 60px 8px rgba(0, 0, 0, 0.2);
 }
 
-input[type="button"] {
+input[type="submit"] {
   margin-top: 10px;
   width: 150px;
   font-size: 1rem;
@@ -334,7 +334,7 @@ input[type="button"] {
     width: 200px;
   }
 
-  input[type="button"] {
+  input[type="submit"] {
     width: 100px;
     font-size: 0.7rem;
   }

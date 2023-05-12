@@ -1,49 +1,96 @@
-import React from "react";
-/* import axios from 'axios' */
+import React, { useState } from "react";
+import axios from "axios";
 
 const Inscription = () => {
-  /*   const [prenom, setPrenom] = useState("");
-  const [nom, setNom] = useState("");
+  const [formSubmit, setFormSubmit] = useState(false);
+  const [firstName, setFirstName] = useState("");
+  const [lastName, setLastName] = useState("");
 
-const handleClick = async (e) => {
-  e.preventDefault();
+  const handleRegister = async (e) => {
+    e.preventDefault();
 
-  console.log(prenom, nom);
+    const firstNameError = document.querySelector(".firstName.error");
+    const lastNameError = document.querySelector(".lastName.error");
 
-  var bodyFormData = new FormData();
+    // Contrôle et affichage des erreurs
 
-  bodyFormData.append("firstname", prenom);
-  bodyFormData.append("lastname", nom);
-
-  axios
-    .post("http://127.0.0.1:3333/registered-users", bodyFormData)
-    .then((response) => {
-      alert("inscription validé !");
-
-      //redirect user to home page
-      const timer = setTimeout(() => {
-        window.location.href = "/connexion";
-      }, 1000); 
+    await axios({
+      method: "post",
+      url: `${process.env.REACT_APP_API_URL}/api/user/register`,
+      data: {
+        firstName,
+        lastName,
+      },
     })
-    .catch((err) => {
-      console.log(err);
-      alert("erreur d'inscription");
-    });
-  } */
+      .then((res) => {
+        if (res.data.errors) {
+          console.log(res);
+          firstNameError.innerHTML = res.data.errors.firstName;
+          lastNameError.innerHTML = res.data.errors.lastName;
+        } else {
+          setFormSubmit(true);
+          console.log("OK");
+        }
+      })
+      .catch((err) => console.log(err));
+  };
 
   return (
     <div>
       {/* FORMULAIRE */}
       <div className="body-container">
         <div className="container">
-          <form action="">
-            <p className="">Veuillez remplir le formulaire ci-dessous.</p>
-            <input type="text" placeholder="NOM" />
-            <br />
-            <input type="text" placeholder="PRÉNOM" />
-            <br />
-            <input type="button" value="S'INSCRIRE" />
-          </form>
+          {!formSubmit ? (
+            <form action="" onSubmit={handleRegister}>
+              <p className="">Veuillez remplir le formulaire ci-dessous.</p>
+              <input
+                type="text"
+                name="lastName"
+                id="lastName"
+                onChange={(e) => setLastName(e.target.value)}
+                value={lastName}
+                placeholder="NOM"
+              />
+
+              <br />
+              <input
+                type="text"
+                name="firstName"
+                id="firstName"
+                onChange={(e) => setFirstName(e.target.value)}
+                value={firstName}
+                placeholder="PRÉNOM"
+              />
+
+              <br />
+              <input type="submit" value="S'INSCRIRE" />
+            </form>
+          ) : (
+            <form action="" onSubmit={handleRegister}>
+              <p className="">Veuillez remplir le formulaire ci-dessous.</p>
+              <input
+                type="text"
+                name="lastName"
+                id="lastName"
+                onChange={(e) => setLastName(e.target.value)}
+                value={lastName}
+                placeholder="NOM"
+              />
+
+              <br />
+              <input
+                type="text"
+                name="firstName"
+                id="firstName"
+                onChange={(e) => setFirstName(e.target.value)}
+                value={firstName}
+                placeholder="PRÉNOM"
+              />
+
+              <br />
+              <input type="submit" value="S'INSCRIRE" />
+            </form>
+          )}
 
           {/* OMBRES */}
 
