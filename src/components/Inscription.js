@@ -2,7 +2,6 @@ import React, { useState } from "react";
 import axios from "axios";
 
 const Inscription = () => {
-  const [formSubmit, setFormSubmit] = useState(false);
   const [firstName, setFirstName] = useState("");
   const [lastName, setLastName] = useState("");
 
@@ -11,6 +10,75 @@ const Inscription = () => {
 
     const firstNameError = document.querySelector(".firstName.error");
     const lastNameError = document.querySelector(".lastName.error");
+    const success = document.querySelector(".success");
+
+    let txtSuccess = "";
+
+    // Switch case
+
+    switch (firstName.toLowerCase()) {
+      case "romeo":
+        if (lastName.toLowerCase() === "vincent") {
+          txtSuccess = "Sheeeesh !! Bien vu le colon originel 😃";
+        }
+        break;
+      case "roméo":
+        if (lastName.toLowerCase() === "vincent") {
+          txtSuccess = "Sheeeesh !! Bien vu le colon originel 😃";
+        }
+        break;
+      case "adrien":
+        if (lastName.toLowerCase() === "kulasingham") {
+          txtSuccess = "Sheeeesh !! Bien vu le doggo originel 😃";
+        }
+        break;
+      case "viverk":
+        if (
+          lastName.toLowerCase() === "anthonippillai" ||
+          lastName.toLowerCase() === "anthoni"
+        ) {
+          txtSuccess = "Sheeeesh !! Bientôt ton tour carrément pakatou ! 😃";
+        }
+        break;
+      case "ange":
+        if (
+          lastName.toLowerCase() === "anthonippillai" ||
+          lastName.toLowerCase() === "anthoni"
+        ) {
+          txtSuccess = "Sheeeesh !! Bientôt ton tour carrément pakatou ! 😃";
+        }
+        break;
+      case "viverkange":
+        if (
+          lastName.toLowerCase() === "anthonippillai" ||
+          lastName.toLowerCase() === "anthoni"
+        ) {
+          txtSuccess = "Sheeeesh !! Bientôt ton tour carrément pakatou ! 😃";
+        }
+        break;
+      case "tamon":
+        if (lastName.toLowerCase() === "kunimoto") {
+          txtSuccess = "Sheeeesh !! Bien vu l'aigri originel 😃";
+        }
+        break;
+      case "maxence":
+        if (lastName.toLowerCase() === "mwitabangoma") {
+          txtSuccess = "Sheeeesh !! C'est carré t'as pas eu la flemme 😃";
+        }
+        break;
+      case "laeticia":
+        if (lastName.toLowerCase() === "mathiyas") {
+          txtSuccess = "Sheeeesh !! Bien vu madame Anthonippillai 😃";
+        }
+        break;
+      case "laëticia":
+        if (lastName.toLowerCase() === "mathiyas") {
+          txtSuccess = "Sheeeesh !! Bien vu madame Anthonippillai 😃";
+        }
+        break;
+      default:
+        txtSuccess = "Inscription réussie. Merci !";
+    }
 
     // Contrôle et affichage des erreurs
 
@@ -24,12 +92,14 @@ const Inscription = () => {
     })
       .then((res) => {
         if (res.data.errors) {
-          console.log(res);
           firstNameError.innerHTML = res.data.errors.firstName;
           lastNameError.innerHTML = res.data.errors.lastName;
+          success.innerHTML = "";
         } else {
-          setFormSubmit(true);
-          console.log("OK");
+          console.log(res);
+          firstNameError.innerHTML = "";
+          lastNameError.innerHTML = "";
+          success.innerHTML = txtSuccess;
         }
       })
       .catch((err) => console.log(err));
@@ -40,57 +110,31 @@ const Inscription = () => {
       {/* FORMULAIRE */}
       <div className="body-container">
         <div className="container">
-          {!formSubmit ? (
-            <form action="" onSubmit={handleRegister}>
-              <p className="">Veuillez remplir le formulaire ci-dessous.</p>
-              <input
-                type="text"
-                name="lastName"
-                id="lastName"
-                onChange={(e) => setLastName(e.target.value)}
-                value={lastName}
-                placeholder="NOM"
-              />
-
-              <br />
-              <input
-                type="text"
-                name="firstName"
-                id="firstName"
-                onChange={(e) => setFirstName(e.target.value)}
-                value={firstName}
-                placeholder="PRÉNOM"
-              />
-
-              <br />
-              <input type="submit" value="S'INSCRIRE" />
-            </form>
-          ) : (
-            <form action="" onSubmit={handleRegister}>
-              <p className="">Veuillez remplir le formulaire ci-dessous.</p>
-              <input
-                type="text"
-                name="lastName"
-                id="lastName"
-                onChange={(e) => setLastName(e.target.value)}
-                value={lastName}
-                placeholder="NOM"
-              />
-
-              <br />
-              <input
-                type="text"
-                name="firstName"
-                id="firstName"
-                onChange={(e) => setFirstName(e.target.value)}
-                value={firstName}
-                placeholder="PRÉNOM"
-              />
-
-              <br />
-              <input type="submit" value="S'INSCRIRE" />
-            </form>
-          )}
+          <form action="" onSubmit={handleRegister}>
+            <p className="">Veuillez remplir le formulaire ci-dessous.</p>
+            <input
+              type="text"
+              name="firstName"
+              id="firstName"
+              onChange={(e) => setFirstName(e.target.value)}
+              value={firstName}
+              placeholder="PRÉNOM"
+            />
+            <div className="firstName error"></div>
+            <br />
+            <input
+              type="text"
+              name="lastName"
+              id="lastName"
+              onChange={(e) => setLastName(e.target.value)}
+              value={lastName}
+              placeholder="NOM"
+            />
+            <div className="lastName error"></div>
+            <br />
+            <input type="submit" value="S'INSCRIRE" />
+            <div className="success"></div>
+          </form>
 
           {/* OMBRES */}
 
