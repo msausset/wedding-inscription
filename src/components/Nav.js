@@ -5,6 +5,7 @@ import btn from "../images/menu-btn.png";
 const Nav = () => {
   let Links = [
     { name: "INSCRIPTION", link: "/inscription" },
+    { name: "PLAN", link: "/plan" },
     { name: "CONTACT", link: "/contact" },
   ];
 
