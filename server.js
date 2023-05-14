@@ -2,6 +2,7 @@ const express = require("express");
 const bodyParser = require("body-parser");
 const cookieParser = require("cookie-parser");
 const userRoutes = require("./back/routes/user.routes");
+const contactRoutes = require("./back/routes/contact.routes");
 require("dotenv").config({ path: "./back/config/.env" });
 require("./back/config/db");
 const cors = require("cors");
@@ -30,6 +31,7 @@ app.use(cookieParser());
 // routes
 
 app.use("/api/user", userRoutes);
+app.use("/api/contact", contactRoutes);
 
 // serveur
 
