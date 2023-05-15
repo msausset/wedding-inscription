@@ -10,16 +10,31 @@ const app = express();
 
 // Autorisation cors
 
-const corsOptions = {
-  origin: process.env.CLIENT_URL,
-  credentials: true,
-  allowedHeaders: ["sessionId", "Content-Type"],
-  exposedHeaders: ["sessionId"],
-  methods: "GET,HEAD,PUT,PATCH,POST,DELETE",
-  preflightContinue: false,
-};
+// const corsOptions = {
+//   origin: process.env.CLIENT_URL,
+//   credentials: true,
+//   allowedHeaders: ["sessionId", "Content-Type"],
+//   exposedHeaders: ["sessionId"],
+//   methods: "GET,HEAD,PUT,PATCH,POST,DELETE",
+//   preflightContinue: false,
+// };
 
-app.use(cors(corsOptions));
+app.use((req, res, next) => {
+  res.setHeader("Access-Control-Allow-Origin", "*");
+  res.setHeader("Access-Control-Allow-Credentials", "true");
+  res.setHeader("Access-Control-Max-Age", "1800");
+  res.setHeader(
+    "Access-Control-Allow-Headers",
+    "X-CSRF-Token,Origin, X-Requested-With, Content, Accept, Accept-Version, Content-Length, Content-MD5, Content-Type, Date, X-Api-Version, Authorization"
+  );
+  res.setHeader(
+    "Access-Control-Allow-Methods",
+    "GET, POST, PUT, DELETE, PATCH, OPTIONS"
+  );
+  next();
+});
+
+// app.use(cors(corsOptions));
 
 // req.params = url / req.body = corps du fichier / req.cookie = accès aux cookies
 // Ou express.json() / express.urlencoded ==> Supporter par express nativement maintenant
