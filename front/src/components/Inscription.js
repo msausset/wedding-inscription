@@ -76,6 +76,11 @@ const Inscription = () => {
           txtSuccess = "Sheeeesh !! Bien vu madame Anthonippillai 😃";
         }
         break;
+      case "vassou":
+        if (lastName.toLowerCase() === "aroun") {
+          txtSuccess = "Sheeeesh !! T'es un bon Benoît 😃";
+        }
+        break;
       default:
         txtSuccess = "Inscription réussie. Merci !";
     }
