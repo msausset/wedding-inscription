@@ -1,18 +1,24 @@
 import React, { useState } from "react";
 import axios from "axios";
 
+import spinner from "../images/spinner.gif";
+
 const Inscription = () => {
   const [firstName, setFirstName] = useState("");
   const [lastName, setLastName] = useState("");
 
+  const [isLoading, setIsLoading] = useState(false);
+
   const handleRegister = async (e) => {
     e.preventDefault();
+
+    setIsLoading(true); // Active le spinner
 
     const firstNameError = document.querySelector(".firstName.error");
     const lastNameError = document.querySelector(".lastName.error");
     const success = document.querySelector(".success");
 
-    let txtSuccess = "";
+    let txtSuccess = "Inscription réussie. Merci !";
 
     // Switch case
 
@@ -105,6 +111,7 @@ const Inscription = () => {
           firstNameError.innerHTML = "";
           lastNameError.innerHTML = "";
           success.innerHTML = txtSuccess;
+          setIsLoading(false);
         }
       })
       .catch((err) => console.log(err));
@@ -138,6 +145,14 @@ const Inscription = () => {
             <div className="lastName error"></div>
             <br />
             <input type="submit" value="S'INSCRIRE" />
+
+            {/* Affichage du spinner */}
+            {isLoading && (
+              <div className="spinner">
+                <img src={spinner} alt="spinner" className="spinner-img" />
+              </div>
+            )}
+
             <div className="success"></div>
           </form>
 

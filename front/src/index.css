@@ -134,7 +134,7 @@ body {
   }
 
   .navbar a {
-    color: #808080;
+    color: black;
   }
 
   .navbar .logo a {
@@ -194,7 +194,7 @@ body {
   }
 
   .navbar a {
-    color: #808080;
+    color: black;
   }
 
   .navbar .logo {
@@ -334,6 +334,15 @@ input[type="submit"] {
   z-index: -1;
 }
 
+.spinner {
+  margin-bottom: 10px;
+}
+
+.spinner-img {
+  width: 50px;
+  height: 50px;
+}
+
 @media screen and (max-width: 700px), (max-height: 900px) {
   body {
     height: 110vh;
@@ -372,11 +381,21 @@ input[type="submit"] {
     left: 131px;
     z-index: -1;
   }
+
+  .spinner-img {
+    width: 30px;
+    height: 30px;
+  }
 }
 
 @media screen and (max-width: 375px), (max-height: 750px) {
   body {
     height: 110vh;
+  }
+
+  .spinner-img {
+    width: 30px;
+    height: 30px;
   }
 
   form {
