@@ -255,6 +255,7 @@ input {
   text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2);
   transition: all 0.3s;
   margin-bottom: 2em;
+  font-family: inherit;
 }
 
 input:hover,
@@ -491,6 +492,7 @@ textarea {
   text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2);
   transition: all 0.3s;
   margin-bottom: 2em;
+  font-family: inherit;
 }
 
 textarea:hover {

@@ -1,57 +1,43 @@
-import React, { useState } from "react";
-import axios from "axios";
+import React, { useState, useRef } from "react";
+import { Link } from "react-router-dom";
+import emailjs from "@emailjs/browser";
 
 import spinner from "../images/spinner.gif";
-
-import { Link } from "react-router-dom";
 
 const Contact = () => {
   const [firstName, setFirstName] = useState("");
   const [lastName, setLastName] = useState("");
   const [text, setText] = useState("");
-
   const [isLoading, setIsLoading] = useState(false);
 
-  const handleContact = async (e) => {
+  const form = useRef();
+
+  const sendEmail = async (e) => {
     e.preventDefault();
 
-    setIsLoading(true); // Active le spinner
-
-    const firstNameError = document.querySelector(".firstName.error");
-    const lastNameError = document.querySelector(".lastName.error");
-    const textError = document.querySelector(".text.error");
     const success = document.querySelector(".success");
 
     let txtSuccess = "Message envoyé !";
 
-    // Contrôle et affichage des erreurs
+    setIsLoading(true); // Active le spinner
 
-    await axios({
-      method: "post",
-      url: `${process.env.REACT_APP_API_URL}/api/contact/contact`,
-      data: {
-        firstName,
-        lastName,
-        text,
-      },
-    })
-      .then((res) => {
-        if (res.data.errors) {
-          firstNameError.innerHTML = res.data.errors.firstName;
-          lastNameError.innerHTML = res.data.errors.lastName;
-          textError.innerHTML = res.data.errors.text;
-          success.innerHTML = "";
-          setIsLoading(false);
-        } else {
-          console.log(res);
-          firstNameError.innerHTML = "";
-          lastNameError.innerHTML = "";
-          textError.innerHTML = "";
+    await emailjs
+      .sendForm(
+        "service_d7xiir2",
+        "template_qrpdkc3",
+        form.current,
+        "V4IVRnDBEPyCoOtgQ"
+      )
+      .then(
+        (result) => {
+          console.log(result);
           success.innerHTML = txtSuccess;
           setIsLoading(false);
+        },
+        (error) => {
+          console.log(error.text);
         }
-      })
-      .catch((err) => console.log(err));
+      );
   };
 
   return (
@@ -59,7 +45,12 @@ const Contact = () => {
       {/* FORMULAIRE */}
       <div className="body-container">
         <div className="container">
-          <form action="" onSubmit={handleContact} className="form-contact">
+          <form
+            action=""
+            ref={form}
+            onSubmit={sendEmail}
+            className="form-contact"
+          >
             <p>
               Veuillez remplir le formulaire ci-dessous. <br />
               Cliquez{" "}
@@ -70,27 +61,27 @@ const Contact = () => {
             </p>
             <input
               type="text"
-              name="firstName"
+              name="user_name"
               id="firstName"
               onChange={(e) => setFirstName(e.target.value)}
               value={firstName}
-              placeholder="PRÉNOM"
+              placeholder="PRÉNOM / NOM"
             />
             <div className="firstName error"></div>
             <br />
             <input
-              type="text"
-              name="lastName"
+              type="email"
+              name="user_email"
               id="lastName"
               onChange={(e) => setLastName(e.target.value)}
               value={lastName}
-              placeholder="NOM"
+              placeholder="EMAIL"
             />
             <div className="lastName error"></div> <br />
             <textarea
               cols="30"
               rows="5"
-              name="text"
+              name="message"
               id="text"
               onChange={(e) => setText(e.target.value)}
               value={text}
