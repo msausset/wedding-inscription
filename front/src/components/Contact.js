@@ -5,9 +5,9 @@ import emailjs from "@emailjs/browser";
 import spinner from "../images/spinner.gif";
 
 const Contact = () => {
-  const [firstName, setFirstName] = useState("");
-  const [lastName, setLastName] = useState("");
-  const [text, setText] = useState("");
+  const [name, setName] = useState("");
+  const [email, setEmail] = useState("");
+  const [message, setMessage] = useState("");
   const [isLoading, setIsLoading] = useState(false);
 
   const form = useRef();
@@ -15,11 +15,24 @@ const Contact = () => {
   const sendEmail = async (e) => {
     e.preventDefault();
 
+    const nameError = document.querySelector(".name.error");
     const success = document.querySelector(".success");
 
     let txtSuccess = "Message envoyé !";
 
     setIsLoading(true); // Active le spinner
+
+    const RegExpression = /^[a-zA-Z\s]*$/;
+
+    if (name.length < 3) {
+      nameError.innerHTML = "Le nom doit faire au moins 3 caractères";
+      setIsLoading(false);
+      return;
+    } else if (!name.match(RegExpression)) {
+      nameError.innerHTML = "Le nom doit contenir uniquement des lettres";
+      setIsLoading(false);
+      return;
+    }
 
     await emailjs
       .sendForm(
@@ -31,6 +44,7 @@ const Contact = () => {
       .then(
         (result) => {
           console.log(result);
+          nameError.innerHTML = "";
           success.innerHTML = txtSuccess;
           setIsLoading(false);
         },
@@ -63,31 +77,32 @@ const Contact = () => {
               type="text"
               name="user_name"
               id="firstName"
-              onChange={(e) => setFirstName(e.target.value)}
-              value={firstName}
+              onChange={(e) => setName(e.target.value)}
+              value={name}
               placeholder="PRÉNOM / NOM"
             />
-            <div className="firstName error"></div>
+            <div className="name error"></div>
             <br />
             <input
               type="email"
               name="user_email"
               id="lastName"
-              onChange={(e) => setLastName(e.target.value)}
-              value={lastName}
+              onChange={(e) => setEmail(e.target.value)}
+              value={email}
               placeholder="EMAIL"
             />
-            <div className="lastName error"></div> <br />
+            <div className="email error"></div> <br />
             <textarea
               cols="30"
               rows="5"
               name="message"
-              id="text"
-              onChange={(e) => setText(e.target.value)}
-              value={text}
+              id="message"
+              onChange={(e) => setMessage(e.target.value)}
+              value={message}
               placeholder="ENTREZ VOTRE MESSAGE ICI ..."
+              required
             />
-            <div className="text error"></div>
+            <div className="message error"></div>
             <br />
             <input type="submit" value="ENVOYER" />
             {/* Affichage du spinner */}
