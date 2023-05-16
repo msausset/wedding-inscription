@@ -93,7 +93,7 @@ body {
 }
 
 .navbar a {
-  color: #454545;
+  color: black;
 }
 
 .navbar .logo {
@@ -138,7 +138,7 @@ body {
   }
 
   .navbar .logo a {
-    color: #454545;
+    color: black;
   }
 
   .navbar .logo {
@@ -190,7 +190,7 @@ body {
   }
 
   .navbar .logo a {
-    color: #454545;
+    color: black;
   }
 
   .navbar a {
@@ -230,7 +230,7 @@ form {
 }
 
 p {
-  color: #454545;
+  color: black;
   font-weight: 500;
   opacity: 0.7;
   font-size: 1.4rem;
@@ -250,7 +250,7 @@ input {
   -webkit-backdrop-filter: blur(5px);
   -moz-backdrop-filter: blur(5px);
   box-shadow: 4px 4px 60px rgba(0, 0, 0, 0.2);
-  color: #454545;
+  color: black;
   font-weight: 500;
   text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2);
   transition: all 0.3s;
@@ -272,7 +272,7 @@ input[type="submit"] {
 }
 
 ::placeholder {
-  color: #454545 !important;
+  color: black !important;
   font-family: "Montserrat";
 }
 
@@ -281,7 +281,7 @@ input[type="submit"] {
 }
 
 .success {
-  color: #90ee90;
+  color: #008000;
 }
 
 .drop {
@@ -467,7 +467,7 @@ textarea {
   -webkit-backdrop-filter: blur(5px);
   -moz-backdrop-filter: blur(5px);
   box-shadow: 4px 4px 60px rgba(0, 0, 0, 0.2);
-  color: #454545;
+  color: black;
   font-weight: 500;
   text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2);
   transition: all 0.3s;
@@ -508,7 +508,7 @@ textarea:hover {
 }
 
 .p-titre {
-  color: #454545;
+  color: black;
   margin-bottom: 10px;
   font-size: 1.2em;
 }

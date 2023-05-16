@@ -66,12 +66,12 @@ const Inscription = () => {
           txtSuccess = "Sheeeesh !! C'est carré t'as pas eu la flemme 😃";
         }
         break;
-      case "laeticia":
+      case "laetitia":
         if (lastName.toLowerCase() === "mathiyas") {
           txtSuccess = "Sheeeesh !! Bien vu madame Anthonippillai 😃";
         }
         break;
-      case "laëticia":
+      case "laëtitia":
         if (lastName.toLowerCase() === "mathiyas") {
           txtSuccess = "Sheeeesh !! Bien vu madame Anthonippillai 😃";
         }
