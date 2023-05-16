@@ -11,7 +11,7 @@ const contactSchema = new mongoose.Schema(
       minlength: 3,
       maxlength: 50,
       validate(v) {
-        if (!validator.isAlpha(v, "fr-FR"))
+        if (!validator.isAlpha(v, "fr-FR", { ignore: " " }))
           throw new Error("Le prénom ne doit contenir que des caractères.");
       },
     },
@@ -21,7 +21,7 @@ const contactSchema = new mongoose.Schema(
       minlength: 3,
       maxlength: 50,
       validate(v) {
-        if (!validator.isAlpha(v, "fr-FR"))
+        if (!validator.isAlpha(v, "fr-FR", { ignore: " " }))
           throw new Error("Le nom ne doit contenir que des caractères.");
       },
     },
