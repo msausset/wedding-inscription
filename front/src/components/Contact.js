@@ -1,6 +1,8 @@
 import React, { useState } from "react";
 import axios from "axios";
 
+import spinner from "../images/spinner.gif";
+
 import { Link } from "react-router-dom";
 
 const Contact = () => {
@@ -8,8 +10,12 @@ const Contact = () => {
   const [lastName, setLastName] = useState("");
   const [text, setText] = useState("");
 
+  const [isLoading, setIsLoading] = useState(false);
+
   const handleContact = async (e) => {
     e.preventDefault();
+
+    setIsLoading(true); // Active le spinner
 
     const firstNameError = document.querySelector(".firstName.error");
     const lastNameError = document.querySelector(".lastName.error");
@@ -35,12 +41,14 @@ const Contact = () => {
           lastNameError.innerHTML = res.data.errors.lastName;
           textError.innerHTML = res.data.errors.text;
           success.innerHTML = "";
+          setIsLoading(false);
         } else {
           console.log(res);
           firstNameError.innerHTML = "";
           lastNameError.innerHTML = "";
           textError.innerHTML = "";
           success.innerHTML = txtSuccess;
+          setIsLoading(false);
         }
       })
       .catch((err) => console.log(err));
@@ -91,6 +99,12 @@ const Contact = () => {
             <div className="text error"></div>
             <br />
             <input type="submit" value="ENVOYER" />
+            {/* Affichage du spinner */}
+            {isLoading && (
+              <div className="spinner">
+                <img src={spinner} alt="spinner" className="spinner-img" />
+              </div>
+            )}
             <div className="success"></div>
           </form>
 

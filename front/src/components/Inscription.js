@@ -106,6 +106,7 @@ const Inscription = () => {
           firstNameError.innerHTML = res.data.errors.firstName;
           lastNameError.innerHTML = res.data.errors.lastName;
           success.innerHTML = "";
+          setIsLoading(false);
         } else {
           console.log(res);
           firstNameError.innerHTML = "";
