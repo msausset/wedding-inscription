@@ -18,7 +18,7 @@ const Plan = () => {
             src="https://my.atlist.com/map/59f6fd86-c8ea-474f-b77b-42b8eca6dd1d?share=true"
             allow="geolocation 'self' https://my.atlist.com"
             frameborder="0"
-            allowfullscreen
+            allowFullScreen
           ></iframe>
         </div>
       </div>
