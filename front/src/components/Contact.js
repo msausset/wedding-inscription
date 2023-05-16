@@ -22,13 +22,15 @@ const Contact = () => {
 
     setIsLoading(true); // Active le spinner
 
-    const RegExpression = /^[a-zA-Z\s]*$/;
+    const RegExpression = /^[a-zA-Z\s-]*$/;
 
     if (name.length < 3) {
+      success.innerHTML = "";
       nameError.innerHTML = "Le nom doit faire au moins 3 caractères";
       setIsLoading(false);
       return;
     } else if (!name.match(RegExpression)) {
+      success.innerHTML = "";
       nameError.innerHTML = "Le nom doit contenir uniquement des lettres";
       setIsLoading(false);
       return;
